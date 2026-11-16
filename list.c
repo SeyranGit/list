@@ -145,21 +145,18 @@ struct List *list_create(void) {
 }
 
 
-ListStatus list_free(struct List **list, void (*destructor)(ValueType)) {
+ListStatus list_free(struct List *list, void (*destructor)(ValueType)) {
   struct RemoveResult result;
   if (list == NULL)
     return LIST_ERROR_NULL;
-  if (*list == NULL)
-    return LIST_ERROR_NULL;
-  while ((*list)->length) {
-    result = list_pop((*list), 0);
+  while (list->length) {
+    result = list_pop(list, 0);
     assert(result.status == LIST_OK);
     if (destructor != NULL) {
       destructor(result.value);
     }
   }
-  free(*list);
-  *list = NULL;
+  free(list);
   return LIST_OK;
 }
 

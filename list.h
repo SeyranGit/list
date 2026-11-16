@@ -43,7 +43,7 @@ ValueType list_get(const struct List*, size_t);
 ListStatus list_sget(const struct List*, size_t, ValueType*);
 ListStatus list_append(struct List*, ValueType);
 ListStatus list_insert(struct List*, size_t, ValueType);
-ListStatus list_free(struct List**, void (*)(ValueType));
+ListStatus list_free(struct List*, void (*)(ValueType));
 ListStatus list_print(const struct List*, FILE*, void (*)(FILE*, ValueType), char *end);
 
 

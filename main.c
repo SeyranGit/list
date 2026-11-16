@@ -63,7 +63,7 @@ void memory_test(void) {
   list_pop(list, list_length(list) - 1);
   for (unsigned int i = 0; i < 10000000; ++i)
     list_append(list, i);
-  list_free(&list, NULL);
+  list_free(list, NULL);
   printf("Memory test complete!\n");
 }
 
@@ -84,7 +84,7 @@ void sort_test(void) {
   list_print(list, stdout, print_int, "\n");
   sort(list, cmp);
   list_print(list, stdout, print_int, "\n");
-  list_free(&list, NULL);
+  list_free(list, NULL);
   printf("Sort test complete!\n"); 
 }
 #endif
@@ -149,7 +149,7 @@ int main(void) {
   list_append(list, &obj5);
  
   list_print(list, stdout, print, "\n");
-  list_free(&list, NULL);
+  list_free(list, NULL);
   // sort
   float a0, b0, c0, d0;
   int e0, f0, g0;
@@ -180,7 +180,7 @@ int main(void) {
   list_print(list, stdout, print_int_and_float, "\n");
   sort(list, if_cmp);
   list_print(list, stdout, print_int_and_float, "\n");
-  list_free(&list, NULL); 
+  list_free(list, NULL); 
 #endif
 
 #if !VOID_PTR
@@ -194,7 +194,7 @@ int main(void) {
   list_append(list, 96); 
   list_print(list, stdout, print_int, "\n");
  
-  list_free(&list, NULL);
+  list_free(list, NULL);
   list = list_create();
   if (list == NULL) {
     fprintf(stderr, "list_create: out of memory\n");
@@ -204,7 +204,7 @@ int main(void) {
   memory_test();
   list_append(list, 300);
   list_print(list, stdout, print_int, "\n");
-  list_free(&list, NULL);
+  list_free(list, NULL);
   list = list_create();
   if (list == NULL) {
     fprintf(stderr, "list_create: out of memory\n");
@@ -221,7 +221,7 @@ int main(void) {
   list_insert(list, 6, 200);
   list_print(list, stdout, print_int, "\n");
   list_print(list, stdout, print_int, " |end|\n");
-  list_free(&list, dis);
+  list_free(list, dis);
   sort_test();
 #endif
   return 0;
