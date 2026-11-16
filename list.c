@@ -27,8 +27,6 @@ static struct Node *get_node(const struct List *list, size_t index) {
   assert(index < list->length);
   if (index == (list->length - 1))
     return list->last;
-  if (index == 0)
-    return list->first;
   node = list->first;
   for (size_t i = 0; i != index; ++i)
     node = node->next;
